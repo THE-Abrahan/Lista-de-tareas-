@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Lista de Tareas Interactiva</title>
+  <link rel="stylesheet" href="estilos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+  <!-- OVERLAY: imagen JPG → GIF al completar tarea o VIDEO para tardío -->
+  <div id="celebracionOverlay">
+    <img id="celebracionImg" src="" alt="completada" style="display:none;" />
+    <video id="celebracionVideo" style="display:none;" autoplay>
+      <source src="" type="video/mp4" />
+    </video>
+    <audio id="celebracionAudio" preload="auto"></audio>
+    <p id="celebracionMsg"></p>
+  </div>
+
+  <div class="container">
+
+    <header class="app-header">
+      <div class="header-top">
+        <span class="app-badge"><i class="fa-solid fa-bolt"></i> created by lucas</span>
+        <div class="header-actions">
+          <button id="btnPersonalizar" class="btn-personalizar" title="Abrir personalización">
+            <i class="fa-solid fa-sliders-h"></i>
+          </button>
+          <button id="btnTema" title="Cambiar tema">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </div>
+      </div>
+      <h1 class="titulo">Mi Lista de<br><span>Tareas</span></h1>
+      <p class="subtitulo">Organiza tu día, con estilo y facilidad.</p>
+    </header>
+
+    <div class="input-section">
+      <div class="input-wrapper">
+        <i class="fa-solid fa-pen-to-square input-icon"></i>
+        <input type="text" id="nuevaTarea" placeholder="Escribe una nueva tarea..." maxlength="80" />
+      </div>
+      <div class="input-wrapper">
+        <i class="fa-solid fa-hourglass-end input-icon"></i>
+        <input type="number" id="tiempoLimite" placeholder="Tiempo límite (segundos)" min="1" value="0" />
+      </div>
+      <button id="btnAgregar" class="btn-agregar">
+        <i class="fa-solid fa-plus"></i> Agregar
+      </button>
+    </div>
+
+    <div id="personalizacionPanel" class="personalizacion-panel">
+      <div class="panel-header">
+        <div>
+          <h3>Personalización</h3>
+          <p>Opciones separadas para mini tarjeta y celebración.</p>
+        </div>
+        <button id="btnCerrarPersonalizacion" class="btn-close" title="Cerrar personalización">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="panel-section">
+        <div class="input-wrapper">
+          <i class="fa-solid fa-image input-icon"></i>
+          <input type="file" id="mediaMiniFile" accept="image/gif,video/mp4,video/webm,image/*,video/*" title="Seleccionar GIF/video para mini tarjeta" />
+          <label for="mediaMiniFile">Mini tarjeta</label>
+        </div>
+        <div class="input-wrapper">
+          <i class="fa-solid fa-expand input-icon"></i>
+          <input type="file" id="mediaOnTimeFile" accept="image/gif,video/mp4,video/webm,image/*,video/*" title="Seleccionar GIF/video para tarjeta grande al completar a tiempo" />
+          <label for="mediaOnTimeFile">Celebración a tiempo</label>
+        </div>
+        <div class="input-wrapper">
+          <i class="fa-solid fa-clock input-icon"></i>
+          <input type="file" id="mediaLateFile" accept="image/gif,video/mp4,video/webm,image/*,video/*" title="Seleccionar GIF/video para tarjeta grande al completar tarde" />
+          <label for="mediaLateFile">Celebración tarde</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat">
+        <span class="stat-num" id="totalTareas">0</span>
+        <span class="stat-label">Total</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" id="tareasCompletadas">0</span>
+        <span class="stat-label">Completadas</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" id="tareasPendientes">0</span>
+        <span class="stat-label">Pendientes</span>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <span class="progress-label" id="progressLabel">0%</span>
+      </div>
+    </div>
+
+    <div class="lista-header">
+      <h2><i class="fa-solid fa-list-check"></i> Mis Tareas</h2>
+      <button id="btnToggle" class="btn-toggle">
+        <i class="fa-solid fa-eye-slash"></i> Ocultar lista
+      </button>
+    </div>
+
+    <div id="listaWrapper">
+      <ul id="listaTareas">
+        <!-- Las tareas se agregan aquí dinámicamente -->
+      </ul>
+      <div class="empty-state" id="emptyState">
+        <i class="fa-solid fa-clipboard-list"></i>
+        <p>¡Aún no hay tareas! Agrega una arriba.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
