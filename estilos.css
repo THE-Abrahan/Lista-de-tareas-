@@ -22,11 +22,11 @@ body.light {
   --bg: #f0f2ff;
   --surface: #ffffff;
   --surface2: #f5f6ff;
-  --border: rgba(0,0,0,0.08);
+  --border: rgba(0,0,0,0.12);
   --text: #1a1d3a;
-  --text-muted: #6b72a0;
-  --completed-bg: rgba(124,106,255,0.07);
-  --completed-text: #aab0d4;
+  --text-muted: #4a5078;
+  --completed-bg: rgba(124,106,255,0.12);
+  --completed-text: #5a6399;
   --shadow: 0 8px 32px rgba(100,100,200,0.12);
   --shadow-sm: 0 2px 12px rgba(100,100,200,0.08);
 }
